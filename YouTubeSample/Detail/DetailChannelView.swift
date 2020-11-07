@@ -6,10 +6,10 @@
 //
 
 import Nuke
+import Reusable
 import UIKit
 
-final class DetailChannelViewCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: type(of: self))
+final class DetailChannelView: UIView, ReusableView {
 
     private let thumbnailView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -36,22 +36,21 @@ final class DetailChannelViewCell: UITableViewCell {
 
     private var imageTask: ImageTask?
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
 
-        contentView.addSubview(thumbnailView)
+        addSubview(thumbnailView)
         NSLayoutConstraint.activate([
-            thumbnailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            thumbnailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            thumbnailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            thumbnailView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            thumbnailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            thumbnailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
 
-        contentView.addSubview(channelTitleLabel)
+        addSubview(channelTitleLabel)
         NSLayoutConstraint.activate([
             channelTitleLabel.leadingAnchor.constraint(equalTo: thumbnailView.trailingAnchor, constant: 8),
-            channelTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            channelTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            channelTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            channelTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -59,8 +58,7 @@ final class DetailChannelViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    func prepareForReuse() {
         imageTask?.cancel()
         imageTask = nil
     }

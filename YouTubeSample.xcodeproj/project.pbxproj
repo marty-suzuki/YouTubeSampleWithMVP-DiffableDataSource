@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED395DCE2556823E008C519A /* Reusable.h in Headers */ = {isa = PBXBuildFile; fileRef = ED395DCC2556823E008C519A /* Reusable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED395DD12556823E008C519A /* Reusable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED395DCA2556823E008C519A /* Reusable.framework */; };
+		ED395DD22556823E008C519A /* Reusable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED395DCA2556823E008C519A /* Reusable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ED395DD925568263008C519A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395DD825568263008C519A /* ReusableView.swift */; };
+		ED395DDD255682D4008C519A /* ReusableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395DDC255682D4008C519A /* ReusableExtension.swift */; };
+		ED395DE1255683B5008C519A /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395DE0255683B5008C519A /* UITableView+Reusable.swift */; };
+		ED395DE525568475008C519A /* ReusableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395DE425568475008C519A /* ReusableResult.swift */; };
+		ED395DF92556F866008C519A /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED395DF82556F866008C519A /* UICollectionView+Extension.swift */; };
 		ED8A46B52547498B0068C889 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A46B42547498B0068C889 /* Search.swift */; };
 		ED8A46B925474A4E0068C889 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8A46B825474A4E0068C889 /* Detail.swift */; };
 		ED8EC4E32546FA40004174C7 /* VideoViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8EC4E22546FA40004174C7 /* VideoViewData.swift */; };
@@ -39,6 +47,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ED395DCF2556823E008C519A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ED9929D22545B30000260E35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED395DC92556823E008C519A;
+			remoteInfo = Reusable;
+		};
 		ED992A0F2545B88700260E35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ED9929D22545B30000260E35 /* Project object */;
@@ -56,6 +71,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				ED992A122545B88700260E35 /* APIModule.framework in Embed Frameworks */,
+				ED395DD22556823E008C519A /* Reusable.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +79,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED395DCA2556823E008C519A /* Reusable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reusable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED395DCC2556823E008C519A /* Reusable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reusable.h; sourceTree = "<group>"; };
+		ED395DCD2556823E008C519A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED395DD825568263008C519A /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		ED395DDC255682D4008C519A /* ReusableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableExtension.swift; sourceTree = "<group>"; };
+		ED395DE0255683B5008C519A /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		ED395DE425568475008C519A /* ReusableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableResult.swift; sourceTree = "<group>"; };
+		ED395DF82556F866008C519A /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		ED8A46B42547498B0068C889 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		ED8A46B825474A4E0068C889 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		ED8EC4E22546FA40004174C7 /* VideoViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewData.swift; sourceTree = "<group>"; };
@@ -96,12 +120,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		ED395DC72556823E008C519A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED9929D72545B30000260E35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ED992A112545B88700260E35 /* APIModule.framework in Frameworks */,
 				ED8EC4EF25470CED004174C7 /* Nuke in Frameworks */,
+				ED395DD12556823E008C519A /* Reusable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,11 +147,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED395DCB2556823E008C519A /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				ED395DCC2556823E008C519A /* Reusable.h */,
+				ED395DCD2556823E008C519A /* Info.plist */,
+				ED395DDC255682D4008C519A /* ReusableExtension.swift */,
+				ED395DE425568475008C519A /* ReusableResult.swift */,
+				ED395DD825568263008C519A /* ReusableView.swift */,
+				ED395DE0255683B5008C519A /* UITableView+Reusable.swift */,
+				ED395DF82556F866008C519A /* UICollectionView+Extension.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
 		ED9929D12545B30000260E35 = {
 			isa = PBXGroup;
 			children = (
 				ED9929DC2545B30000260E35 /* YouTubeSample */,
 				ED992A0B2545B88700260E35 /* APIModule */,
+				ED395DCB2556823E008C519A /* Reusable */,
 				ED9929DB2545B30000260E35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +176,7 @@
 			children = (
 				ED9929DA2545B30000260E35 /* YouTubeSample.app */,
 				ED992A0A2545B88700260E35 /* APIModule.framework */,
+				ED395DCA2556823E008C519A /* Reusable.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,6 +250,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		ED395DC52556823E008C519A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED395DCE2556823E008C519A /* Reusable.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED992A052545B88700260E35 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +269,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		ED395DC92556823E008C519A /* Reusable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED395DD52556823E008C519A /* Build configuration list for PBXNativeTarget "Reusable" */;
+			buildPhases = (
+				ED395DC52556823E008C519A /* Headers */,
+				ED395DC62556823E008C519A /* Sources */,
+				ED395DC72556823E008C519A /* Frameworks */,
+				ED395DC82556823E008C519A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reusable;
+			productName = Reusable;
+			productReference = ED395DCA2556823E008C519A /* Reusable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		ED9929D92545B30000260E35 /* YouTubeSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED9929EE2545B30000260E35 /* Build configuration list for PBXNativeTarget "YouTubeSample" */;
@@ -226,6 +300,7 @@
 			);
 			dependencies = (
 				ED992A102545B88700260E35 /* PBXTargetDependency */,
+				ED395DD02556823E008C519A /* PBXTargetDependency */,
 			);
 			name = YouTubeSample;
 			packageProductDependencies = (
@@ -262,6 +337,10 @@
 				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
+					ED395DC92556823E008C519A = {
+						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
+					};
 					ED9929D92545B30000260E35 = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -289,11 +368,19 @@
 			targets = (
 				ED9929D92545B30000260E35 /* YouTubeSample */,
 				ED992A092545B88700260E35 /* APIModule */,
+				ED395DC92556823E008C519A /* Reusable */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		ED395DC82556823E008C519A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED9929D82545B30000260E35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +401,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		ED395DC62556823E008C519A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED395DDD255682D4008C519A /* ReusableExtension.swift in Sources */,
+				ED395DF92556F866008C519A /* UICollectionView+Extension.swift in Sources */,
+				ED395DE525568475008C519A /* ReusableResult.swift in Sources */,
+				ED395DE1255683B5008C519A /* UITableView+Reusable.swift in Sources */,
+				ED395DD925568263008C519A /* ReusableView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ED9929D62545B30000260E35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,6 +452,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		ED395DD02556823E008C519A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ED395DC92556823E008C519A /* Reusable */;
+			targetProxy = ED395DCF2556823E008C519A /* PBXContainerItemProxy */;
+		};
 		ED992A102545B88700260E35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ED992A092545B88700260E35 /* APIModule */;
@@ -380,6 +484,61 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ED395DD32556823E008C519A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Reusable/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.Reusable";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		ED395DD42556823E008C519A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Reusable/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.marty-suzuki.Reusable";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		ED9929EC2545B30000260E35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -592,6 +751,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		ED395DD52556823E008C519A /* Build configuration list for PBXNativeTarget "Reusable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED395DD32556823E008C519A /* Debug */,
+				ED395DD42556823E008C519A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ED9929D52545B30000260E35 /* Build configuration list for PBXProject "YouTubeSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
