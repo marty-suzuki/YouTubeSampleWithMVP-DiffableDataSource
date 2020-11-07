@@ -43,7 +43,7 @@ final class DetailPlayerView: UIView {
     }
 
     override func updateConstraints() {
-        let isLandscape = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .regular
+        let isLandscape = traitCollection.verticalSizeClass == .compact && traitCollection.userInterfaceIdiom == .phone
         if isLandscape {
             NSLayoutConstraint.deactivate(portraitConstraints)
             NSLayoutConstraint.activate(landscapeConstraints)

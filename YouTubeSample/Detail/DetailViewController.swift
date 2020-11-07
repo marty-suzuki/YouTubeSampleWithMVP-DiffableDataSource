@@ -136,7 +136,7 @@ final class DetailViewController: UIViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
 
-        let isLandscape = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .regular
+        let isLandscape = traitCollection.verticalSizeClass == .compact && traitCollection.userInterfaceIdiom == .phone
         if isLandscape {
             baseStackView.axis = .horizontal
             ratioConstraint.isActive = true
