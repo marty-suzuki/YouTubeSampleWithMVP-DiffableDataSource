@@ -5,14 +5,14 @@
 //  Created by marty-suzuki on 2020/10/29.
 //
 
+import Reusable
 import UIKit
 
 protocol DetailVideoSwitchSectionHeaderViewDelegate: AnyObject {
     func sectionHeaderView(_ view: DetailVideoSwitchSectionHeaderView, selectedIndexChanged index: Int)
 }
 
-final class DetailVideoSwitchSectionHeaderView: UITableViewHeaderFooterView {
-    static let reuseIdentifier = String(describing: type(of: self))
+final class DetailVideoSwitchSectionHeaderView: UIView, ReusableView {
 
     private let segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(frame: .zero)
@@ -22,15 +22,15 @@ final class DetailVideoSwitchSectionHeaderView: UITableViewHeaderFooterView {
 
     private weak var delegate: DetailVideoSwitchSectionHeaderViewDelegate?
 
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-        contentView.addSubview(segmentedControl)
+        addSubview(segmentedControl)
         NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            segmentedControl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            segmentedControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            segmentedControl.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            segmentedControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
 
         segmentedControl.addTarget(
