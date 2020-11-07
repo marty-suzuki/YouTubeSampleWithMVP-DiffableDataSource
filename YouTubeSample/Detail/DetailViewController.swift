@@ -5,6 +5,7 @@
 //  Created by marty-suzuki on 2020/10/26.
 //
 
+import Reusable
 import UIKit
 
 protocol DetailViewProtocol: AnyObject {
@@ -25,12 +26,12 @@ final class DetailViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(DetailSummaryViewCell.self, forCellReuseIdentifier: DetailSummaryViewCell.reuseIdentifier)
-        tableView.register(DetailChannelViewCell.self, forCellReuseIdentifier: DetailChannelViewCell.reuseIdentifier)
-        tableView.register(DetailDescriptionViewCell.self, forCellReuseIdentifier: DetailDescriptionViewCell.reuseIdentifier)
-        tableView.register(VideoViewCell.self, forCellReuseIdentifier: VideoViewCell.reuseIdentifier)
-        tableView.register(LoadingViewCell.self, forCellReuseIdentifier: LoadingViewCell.reuseIdentifier)
-        tableView.register(DetailVideoSwitchSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: DetailVideoSwitchSectionHeaderView.reuseIdentifier)
+        tableView.reusable.registerCell(DetailSummaryView.self)
+        tableView.reusable.registerCell(DetailChannelView.self)
+        tableView.reusable.registerCell(DetailDescriptionView.self)
+        tableView.reusable.registerCell(VideoView.self)
+        tableView.reusable.registerCell(LoadingView.self)
+        tableView.reusable.registerHeaderFooterView(DetailVideoSwitchSectionHeaderView.self)
         tableView.tableHeaderView = {
             let view = UIView(frame: .zero)
             view.frame.size.height = .leastNormalMagnitude
@@ -55,44 +56,29 @@ final class DetailViewController: UIViewController {
     private lazy var cellProvider: Detail.DataSource.CellProvider = { tableView, indexPath, item in
         switch item {
         case let .summary(data):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: DetailSummaryViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! DetailSummaryViewCell
-            cell.configure(data)
-            return cell
+            let result = tableView.reusable.dequeueCell(DetailSummaryView.self, for: indexPath)
+            result.view.configure(data)
+            return result.cell()
 
         case let .channel(data):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: DetailChannelViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! DetailChannelViewCell
-            cell.configure(data)
-            return cell
+            let result = tableView.reusable.dequeueCell(DetailChannelView.self, for: indexPath)
+            result.view.configure(data)
+            return result.cell(selectionStyle: .none)
 
         case let .description(text):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: DetailDescriptionViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! DetailDescriptionViewCell
-            cell.configure(text)
-            return cell
+            let result = tableView.reusable.dequeueCell(DetailDescriptionView.self, for: indexPath)
+            result.view.configure(text)
+            return result.cell(selectionStyle: .none)
 
         case let .video(data):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: VideoViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! VideoViewCell
-            cell.configure(data)
-            return cell
+            let result = tableView.reusable.dequeueCell(VideoView.self, for: indexPath)
+            result.view.configure(data)
+            return result.cell()
 
         case .loading:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: LoadingViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! LoadingViewCell
-            cell.startAnimating()
-            return cell
+            let result = tableView.reusable.dequeueCell(LoadingView.self, for: indexPath)
+            result.view.startAnimating()
+            return result.cell(selectionStyle: .none)
         }
     }
 
@@ -154,7 +140,7 @@ final class DetailViewController: UIViewController {
         if isLandscape {
             baseStackView.axis = .horizontal
             ratioConstraint.isActive = true
-        }  else {
+        } else {
             baseStackView.axis = .vertical
             ratioConstraint.isActive = false
         }
@@ -181,15 +167,13 @@ extension DetailViewController: UITableViewDelegate {
         case .information, .loading:
             return nil
         case .videos:
-            let view = tableView.dequeueReusableHeaderFooterView(
-                withIdentifier: DetailVideoSwitchSectionHeaderView.reuseIdentifier
-            ) as! DetailVideoSwitchSectionHeaderView
-            view.configure(
+            let result = tableView.reusable.dequeueHeaderFooterView(DetailVideoSwitchSectionHeaderView.self)
+            result.view.configure(
                 segments: presenter.videoSegments,
                 selectedSegment: presenter.selectedVideoSegment,
                 delegate: self
             )
-            return view
+            return result.headerFooterView()
         }
     }
 }

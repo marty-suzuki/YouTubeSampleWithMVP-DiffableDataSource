@@ -5,6 +5,7 @@
 //  Created by marty-suzuki on 2020/10/26.
 //
 
+import Reusable
 import UIKit
 
 protocol SearchViewProtocol: AnyObject {
@@ -25,8 +26,8 @@ final class SearchViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(VideoViewCell.self, forCellReuseIdentifier: VideoViewCell.reuseIdentifier)
-        tableView.register(LoadingViewCell.self, forCellReuseIdentifier: LoadingViewCell.reuseIdentifier)
+        tableView.reusable.registerCell(VideoView.self)
+        tableView.reusable.registerCell(LoadingView.self)
         tableView.tableHeaderView = {
             let view = UIView(frame: .zero)
             view.frame.size.height = .leastNormalMagnitude
@@ -43,19 +44,13 @@ final class SearchViewController: UIViewController {
     private lazy var cellProvider: Search.DataSource.CellProvider = { tableView, indexPath, item in
         switch item {
         case let .video(video):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: VideoViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! VideoViewCell
-            cell.configure(video)
-            return cell
+            let result = tableView.reusable.dequeueCell(VideoView.self, for: indexPath)
+            result.view.configure(video)
+            return result.cell()
         case .loading:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: LoadingViewCell.reuseIdentifier,
-                for: indexPath
-            ) as! LoadingViewCell
-            cell.startAnimating()
-            return cell
+            let result = tableView.reusable.dequeueCell(LoadingView.self, for: indexPath)
+            result.view.startAnimating()
+            return result.cell(selectionStyle: .none)
         }
     }
 
