@@ -40,7 +40,7 @@
 		ED992A312545F84700260E35 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED992A302545F84700260E35 /* DetailViewController.swift */; };
 		ED992A362546F31300260E35 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED992A352546F31300260E35 /* DetailViewPresenter.swift */; };
 		ED992A3A2546F32000260E35 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED992A392546F32000260E35 /* DetailModel.swift */; };
-		EDA24EB22549BAD500F8B1E3 /* LoadingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB12549BAD500F8B1E3 /* LoadingViewCell.swift */; };
+		EDA24EB22549BAD500F8B1E3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB12549BAD500F8B1E3 /* LoadingView.swift */; };
 		EDA24EB52549C7AF00F8B1E3 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB42549C7AF00F8B1E3 /* Either.swift */; };
 		EDA24EBA2549CD9F00F8B1E3 /* DetailChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */; };
 		EDA24EBF2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */; };
@@ -113,7 +113,7 @@
 		ED992A302545F84700260E35 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ED992A352546F31300260E35 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
 		ED992A392546F32000260E35 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
-		EDA24EB12549BAD500F8B1E3 /* LoadingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewCell.swift; sourceTree = "<group>"; };
+		EDA24EB12549BAD500F8B1E3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		EDA24EB42549C7AF00F8B1E3 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChannelView.swift; sourceTree = "<group>"; };
 		EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoSwitchSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 			children = (
 				ED8EC4E22546FA40004174C7 /* VideoViewData.swift */,
 				ED8EC4F125470D63004174C7 /* VideoView.swift */,
-				EDA24EB12549BAD500F8B1E3 /* LoadingViewCell.swift */,
+				EDA24EB12549BAD500F8B1E3 /* LoadingView.swift */,
 				EDA24EB42549C7AF00F8B1E3 /* Either.swift */,
 			);
 			path = Common;
@@ -421,7 +421,7 @@
 				ED8EC4F225470D63004174C7 /* VideoView.swift in Sources */,
 				ED8A46B925474A4E0068C889 /* Detail.swift in Sources */,
 				ED992A262545DB5700260E35 /* SearchViewController.swift in Sources */,
-				EDA24EB22549BAD500F8B1E3 /* LoadingViewCell.swift in Sources */,
+				EDA24EB22549BAD500F8B1E3 /* LoadingView.swift in Sources */,
 				ED8EC4E32546FA40004174C7 /* VideoViewData.swift in Sources */,
 				EDA24EB52549C7AF00F8B1E3 /* Either.swift in Sources */,
 				ED992A2A2545E54100260E35 /* SearchViewPresenter.swift in Sources */,
