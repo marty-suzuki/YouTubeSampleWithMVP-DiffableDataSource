@@ -1,14 +1,14 @@
 //
-//  DetailSummaryViewCell.swift
+//  DetailSummaryView.swift
 //  YouTubeSample
 //
 //  Created by marty-suzuki on 2020/10/26.
 //
 
+import Reusable
 import UIKit
 
-final class DetailSummaryViewCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: type(of: self))
+final class DetailSummaryView: UIView, ReusableView {
 
     private let videoTitleLabel: UILabel = {
         let label = UILabel(frame: .zero)
@@ -38,8 +38,8 @@ final class DetailSummaryViewCell: UITableViewCell {
         return label
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
         let vStackView = UIStackView(arrangedSubviews: [
             videoTitleLabel,
@@ -57,12 +57,12 @@ final class DetailSummaryViewCell: UITableViewCell {
         hStackView.spacing = 4
         hStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        contentView.addSubview(hStackView)
+        addSubview(hStackView)
         NSLayoutConstraint.activate([
-            hStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            hStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            hStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            hStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            hStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
 
