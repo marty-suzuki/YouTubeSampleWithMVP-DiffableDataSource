@@ -1,15 +1,15 @@
 //
-//  VideoViewCell.swift
+//  VideoView.swift
 //  YouTubeSample
 //
 //  Created by marty-suzuki on 2020/10/26.
 //
 
 import Nuke
+import Reusable
 import UIKit
 
-final class VideoViewCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: type(of: self))
+final class VideoView: UIView, ReusableView {
 
     private let thumbnailView: UIImageView = {
         let imageView = UIImageView(image: nil)
@@ -38,14 +38,14 @@ final class VideoViewCell: UITableViewCell {
 
     private var imageTask: ImageTask?
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-        contentView.addSubview(thumbnailView)
+        addSubview(thumbnailView)
         NSLayoutConstraint.activate([
-            thumbnailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            thumbnailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            thumbnailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            thumbnailView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            thumbnailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            thumbnailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             thumbnailView.heightAnchor.constraint(equalToConstant: 72),
             thumbnailView.widthAnchor.constraint(equalTo: thumbnailView.heightAnchor, multiplier: 16 / 9)
         ])
@@ -56,11 +56,11 @@ final class VideoViewCell: UITableViewCell {
         ])
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(stackView)
+        addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: thumbnailView.trailingAnchor, constant: 12),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -68,8 +68,7 @@ final class VideoViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    func prepareForReuse() {
         imageTask?.cancel()
         imageTask = nil
     }
