@@ -1,5 +1,5 @@
 //
-//  DetailChannelViewCell.swift
+//  DetailChannelView.swift
 //  YouTubeSample
 //
 //  Created by marty-suzuki on 2020/10/29.

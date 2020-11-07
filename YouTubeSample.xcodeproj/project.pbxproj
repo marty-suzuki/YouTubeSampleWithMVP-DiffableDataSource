@@ -42,7 +42,7 @@
 		ED992A3A2546F32000260E35 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED992A392546F32000260E35 /* DetailModel.swift */; };
 		EDA24EB22549BAD500F8B1E3 /* LoadingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB12549BAD500F8B1E3 /* LoadingViewCell.swift */; };
 		EDA24EB52549C7AF00F8B1E3 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB42549C7AF00F8B1E3 /* Either.swift */; };
-		EDA24EBA2549CD9F00F8B1E3 /* DetailChannelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB92549CD9F00F8B1E3 /* DetailChannelViewCell.swift */; };
+		EDA24EBA2549CD9F00F8B1E3 /* DetailChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */; };
 		EDA24EBF2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,7 +115,7 @@
 		ED992A392546F32000260E35 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		EDA24EB12549BAD500F8B1E3 /* LoadingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewCell.swift; sourceTree = "<group>"; };
 		EDA24EB42549C7AF00F8B1E3 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
-		EDA24EB92549CD9F00F8B1E3 /* DetailChannelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChannelViewCell.swift; sourceTree = "<group>"; };
+		EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChannelView.swift; sourceTree = "<group>"; };
 		EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoSwitchSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,7 +228,7 @@
 				ED992A352546F31300260E35 /* DetailViewPresenter.swift */,
 				ED8EC4E6254700ED004174C7 /* DetailPlayerView.swift */,
 				ED8EC4EA25470C89004174C7 /* DetailSummaryView.swift */,
-				EDA24EB92549CD9F00F8B1E3 /* DetailChannelViewCell.swift */,
+				EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */,
 				ED8EC4F425471F54004174C7 /* DetailDescriptionViewCell.swift */,
 				EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */,
 				ED992A392546F32000260E35 /* DetailModel.swift */,
@@ -432,7 +432,7 @@
 				ED992A3A2546F32000260E35 /* DetailModel.swift in Sources */,
 				ED9929DE2545B30000260E35 /* AppDelegate.swift in Sources */,
 				ED9929E02545B30000260E35 /* SceneDelegate.swift in Sources */,
-				EDA24EBA2549CD9F00F8B1E3 /* DetailChannelViewCell.swift in Sources */,
+				EDA24EBA2549CD9F00F8B1E3 /* DetailChannelView.swift in Sources */,
 				EDA24EBF2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift in Sources */,
 				ED8A46B52547498B0068C889 /* Search.swift in Sources */,
 				ED8EC4EB25470C89004174C7 /* DetailSummaryView.swift in Sources */,
