@@ -21,6 +21,7 @@ final class SearchViewPresenter: SearchViewPresenterProtocol {
     private let model: SearchModelProtocol
     private let showDetail: (String) -> Void
     private let openURL: (URL) -> Void
+    private let mainAsync: (@escaping () -> Void) -> Void
     private var isLoading: Bool = false {
         didSet {
             if isLoading {
@@ -33,7 +34,8 @@ final class SearchViewPresenter: SearchViewPresenterProtocol {
             } else {
                 snapshot.deleteSections([.loading])
             }
-            DispatchQueue.main.async { [snapshot] in
+            
+            mainAsync { [snapshot] in
                 self.view?.applySnapshot(snapshot, animated: true)
             }
         }
@@ -43,12 +45,14 @@ final class SearchViewPresenter: SearchViewPresenterProtocol {
         view: SearchViewProtocol,
         model: SearchModelProtocol,
         showDetail: @escaping (String) -> Void,
-        openURL: @escaping (URL) -> Void
+        openURL: @escaping (URL) -> Void,
+        mainAsync: @escaping (@escaping () -> Void) -> Void
     ) {
         self.view = view
         self.model = model
         self.showDetail = showDetail
         self.openURL = openURL
+        self.mainAsync = mainAsync
 
         model.delegate = self
     }
@@ -108,7 +112,8 @@ extension SearchViewPresenter: SearchModelDelegate {
                 },
                 UIAlertAction(title: "No", style: .cancel, handler: nil)
             ]
-            DispatchQueue.main.async {
+
+            mainAsync {
                 self.view?.showAlert(
                     title: "Error",
                     message: "Do you open in Safari?",
@@ -136,7 +141,7 @@ extension SearchViewPresenter: SearchModelDelegate {
         }
         snapshot.appendItems(data, toSection: .searchResult)
         snapshot.deleteSections([.loading])
-        DispatchQueue.main.async { [snapshot] in
+        mainAsync { [snapshot] in
             self.view?.applySnapshot(snapshot, animated: true)
         }
     }

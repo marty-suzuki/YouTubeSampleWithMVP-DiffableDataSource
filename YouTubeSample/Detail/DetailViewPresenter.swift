@@ -23,6 +23,7 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
     private let model: DetailModelProtocol
     private let showDetail: (String) -> Void
     private let openURL: (URL) -> Void
+    private let mainAsync: (@escaping () -> Void) -> Void
     private let videoId: String
     private var channelId: String?
     private var isViewAppeared = false
@@ -42,13 +43,15 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
         view: DetailViewProtocol,
         model: DetailModelProtocol,
         showDetail: @escaping (String) -> Void,
-        openURL: @escaping (URL) -> Void
+        openURL: @escaping (URL) -> Void,
+        mainAsync: @escaping (@escaping () -> Void) -> Void
     ) {
         self.view = view
         self.model = model
         self.videoId = videoId
         self.showDetail = showDetail
         self.openURL = openURL
+        self.mainAsync = mainAsync
 
         model.delegate = self
     }
@@ -119,7 +122,7 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
                 snapshot = Detail.Snapshot()
                 snapshot.appendSections([.loading])
                 snapshot.appendItems([.loading], toSection: .loading)
-                DispatchQueue.main.async {
+                mainAsync {
                     self.view?.applySnapshot(self.snapshot, animated: true)
                 }
             }
@@ -151,7 +154,7 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
             snapshot.appendItems(items, toSection: section)
         }
 
-        DispatchQueue.main.async {
+        mainAsync {
             self.view?.applySnapshot(self.snapshot, animated: true)
         }
     }
@@ -189,7 +192,8 @@ extension DetailViewPresenter: DetailModelDelegate {
                 },
                 UIAlertAction(title: "No", style: .cancel, handler: nil)
             ]
-            DispatchQueue.main.async {
+
+            mainAsync {
                 self.view?.showAlert(
                     title: "Error",
                     message: "Do you open in Safari?",
@@ -217,7 +221,7 @@ extension DetailViewPresenter: DetailModelDelegate {
         )
         self.desciprion = snippet.description
 
-        DispatchQueue.main.async {
+        mainAsync {
             self.view?.loadPlayer(videoDetail.player.embedHtml)
         }
 

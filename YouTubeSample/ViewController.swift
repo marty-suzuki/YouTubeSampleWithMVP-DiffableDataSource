@@ -32,7 +32,8 @@ final class ViewController: UINavigationController {
                 view: $0,
                 model: model,
                 showDetail: { self?.showDetail(videoId: $0) },
-                openURL: { UIApplication.shared.open($0, options: [:], completionHandler: nil) }
+                openURL: { UIApplication.shared.open($0, options: [:], completionHandler: nil) },
+                mainAsync: { DispatchQueue.main.async(execute: $0) }
             )
         })
         
@@ -60,7 +61,8 @@ final class ViewController: UINavigationController {
                         me.showDetail(videoId: videoId)
                     }
                 },
-                openURL: { UIApplication.shared.open($0, options: [:], completionHandler: nil) }
+                openURL: { UIApplication.shared.open($0, options: [:], completionHandler: nil) },
+                mainAsync: { DispatchQueue.main.async(execute: $0) }
             )
         })
         present(detailVC, animated: true, completion: nil)
