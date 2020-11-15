@@ -166,13 +166,18 @@ extension DetailViewController: UITableViewDelegate {
         switch dataSource.snapshot().sectionIdentifiers[section] {
         case .information, .loading:
             return nil
-        case .videos:
+        case let .videos(segments):
+            guard segments.count > 1 else {
+                return nil
+            }
+
             let result = tableView.reusable.dequeueHeaderFooterView(DetailVideoSwitchSectionHeaderView.self)
             result.view.configure(
-                segments: presenter.videoSegments,
-                selectedSegment: presenter.selectedVideoSegment,
-                delegate: self
-            )
+                segments: segments,
+                selectedSegment: presenter.selectedVideoSegment
+            ) { [weak self] in
+                self?.presenter.selectSegment($0)
+            }
             return result.headerFooterView()
         }
     }
@@ -191,11 +196,5 @@ extension DetailViewController: DetailViewProtocol {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         actions.forEach(alert.addAction)
         present(alert, animated: true, completion: nil)
-    }
-}
-
-extension DetailViewController: DetailVideoSwitchSectionHeaderViewDelegate {
-    func sectionHeaderView(_ view: DetailVideoSwitchSectionHeaderView, selectedIndexChanged index: Int) {
-        presenter.selectSegment(index: index)
     }
 }

@@ -13,7 +13,7 @@ enum Detail {
 
     enum Section: Hashable {
         case information
-        case videos
+        case videos(segments: [VideoSegment])
         case loading
     }
 
@@ -36,6 +36,7 @@ enum Detail {
         let title: String
         let thumbnail: URL
     }
+
     enum VideoSegment: String, CaseIterable {
         case newest = "Newest"
         case related = "Related"

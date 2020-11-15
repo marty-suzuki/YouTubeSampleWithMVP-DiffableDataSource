@@ -8,10 +8,6 @@
 import Reusable
 import UIKit
 
-protocol DetailVideoSwitchSectionHeaderViewDelegate: AnyObject {
-    func sectionHeaderView(_ view: DetailVideoSwitchSectionHeaderView, selectedIndexChanged index: Int)
-}
-
 final class DetailVideoSwitchSectionHeaderView: UIView, ReusableView {
 
     private let segmentedControl: UISegmentedControl = {
@@ -20,7 +16,7 @@ final class DetailVideoSwitchSectionHeaderView: UIView, ReusableView {
         return control
     }()
 
-    private weak var delegate: DetailVideoSwitchSectionHeaderViewDelegate?
+    private var selectedIndexHandler: ((Int) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,13 +41,13 @@ final class DetailVideoSwitchSectionHeaderView: UIView, ReusableView {
     }
 
     @objc private func segmentedControlValueChanged(_ segmentedControl: UISegmentedControl) {
-        delegate?.sectionHeaderView(self, selectedIndexChanged: segmentedControl.selectedSegmentIndex)
+        selectedIndexHandler?(segmentedControl.selectedSegmentIndex)
     }
 
     func configure(
         segments: [Detail.VideoSegment],
         selectedSegment: Detail.VideoSegment,
-        delegate: DetailVideoSwitchSectionHeaderViewDelegate
+        selectedSegmentHandler: @escaping (Detail.VideoSegment) -> Void
     ) {
         segmentedControl.removeAllSegments()
         segments.forEach {
@@ -66,6 +62,6 @@ final class DetailVideoSwitchSectionHeaderView: UIView, ReusableView {
             segmentedControl.selectedSegmentIndex = index
         }
 
-        self.delegate = delegate
+        selectedIndexHandler = { selectedSegmentHandler(segments[$0]) }
     }
 }

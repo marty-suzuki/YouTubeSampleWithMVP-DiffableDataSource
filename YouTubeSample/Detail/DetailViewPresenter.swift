@@ -9,12 +9,11 @@ import APIModule
 import UIKit
 
 protocol DetailViewPresenterProtocol: AnyObject {
-    var videoSegments: [Detail.VideoSegment] { get }
     var selectedVideoSegment: Detail.VideoSegment { get }
     func setup()
     func viewDidAppear()
     func select(indexPath: IndexPath)
-    func selectSegment(index: Int)
+    func selectSegment(_ segment: Detail.VideoSegment)
 }
 
 final class DetailViewPresenter: DetailViewPresenterProtocol {
@@ -35,7 +34,6 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
     private var newestVideos: [VideoViewData] = []
     private var channel: Detail.ChannelViewData?
 
-    let videoSegments = Detail.VideoSegment.allCases
     private(set) var selectedVideoSegment: Detail.VideoSegment = .newest
 
     init(
@@ -90,8 +88,8 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
         }
     }
 
-    func selectSegment(index: Int) {
-        self.selectedVideoSegment = videoSegments[index]
+    func selectSegment(_ segment: Detail.VideoSegment) {
+        self.selectedVideoSegment = segment
         updateSnapshot()
     }
 
@@ -135,14 +133,25 @@ final class DetailViewPresenter: DetailViewPresenterProtocol {
                 channel.map(Detail.Item.channel),
                 canShowAll ? desciprion.map(Detail.Item.description) : nil
             ].compactMap { $0 }),
-            (.videos, {
-                switch selectedVideoSegment {
-                case .newest:
-                    return newestVideos.map(Detail.Item.video)
-                case .related:
-                    return relatedVideos.map(Detail.Item.video)
+            {
+                let hasTab = !newestVideos.isEmpty && !relatedVideos.isEmpty
+                let videos: [VideoViewData]
+                let segments: [Detail.VideoSegment]
+                if hasTab {
+                    switch selectedVideoSegment {
+                    case .newest:
+                        videos = newestVideos
+                    case .related:
+                        videos = relatedVideos
+                    }
+                    segments = [.newest, .related]
+                } else {
+                    (segments, videos) = newestVideos.isEmpty
+                        ? ([.related], relatedVideos)
+                        : ([.newest], newestVideos)
                 }
-            }())
+                return (.videos(segments: segments), videos.map(Detail.Item.video))
+            }()
         ]
 
         snapshot = Detail.Snapshot()
