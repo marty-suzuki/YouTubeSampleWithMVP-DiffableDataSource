@@ -33,6 +33,20 @@ extension YouTube.Response {
         public let totalResults: Int?
         public let resultsPerPage: Int
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case items
+        case nextPageToken
+        case pageInfo
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.items = try container.decode([Result<Item, Error>].self, forKey: .items)
+            .compactMap { try? $0.get() }
+        self.pageInfo = try container.decode(PageInfo.self, forKey: .pageInfo)
+        self.nextPageToken = try container.decodeIfPresent(String.self, forKey: .nextPageToken)
+    }
 }
 
 extension YouTube.Video {

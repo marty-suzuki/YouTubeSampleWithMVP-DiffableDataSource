@@ -45,6 +45,7 @@
 		EDA24EB52549C7AF00F8B1E3 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB42549C7AF00F8B1E3 /* Either.swift */; };
 		EDA24EBA2549CD9F00F8B1E3 /* DetailChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */; };
 		EDA24EBF2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */; };
+		EDE589C3261B5B3400B01229 /* ResultExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE589C2261B5B3400B01229 /* ResultExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		EDA24EB42549C7AF00F8B1E3 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		EDA24EB92549CD9F00F8B1E3 /* DetailChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChannelView.swift; sourceTree = "<group>"; };
 		EDA24EBE2549D89600F8B1E3 /* DetailVideoSwitchSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVideoSwitchSectionHeaderView.swift; sourceTree = "<group>"; };
+		EDE589C2261B5B3400B01229 /* ResultExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				ED992A0D2545B88700260E35 /* Info.plist */,
 				ED992A1A2545BC2C00260E35 /* YouTube.swift */,
 				ED992A172545B92600260E35 /* YouTube.API.swift */,
+				EDE589C2261B5B3400B01229 /* ResultExtension.swift */,
 			);
 			path = APIModule;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE589C3261B5B3400B01229 /* ResultExtension.swift in Sources */,
 				ED992A182545B92600260E35 /* YouTube.API.swift in Sources */,
 				ED992A1B2545BC2C00260E35 /* YouTube.swift in Sources */,
 			);
