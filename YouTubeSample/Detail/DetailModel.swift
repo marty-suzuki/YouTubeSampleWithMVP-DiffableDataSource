@@ -57,6 +57,7 @@ final class DetailModel: DetailModelProtocol {
         _ = _getVideos([videoId]) { [weak delegate] result in
             let makeURL: () -> URL? = {
                 guard var componets = URLComponents(string: "https://www.youtube.com/watch") else {
+                    // - TODO: Irregular case handling
                     return nil
                 }
                 componets.queryItems = [URLQueryItem(name: "v", value: videoId)]
@@ -71,6 +72,7 @@ final class DetailModel: DetailModelProtocol {
                 } else if let url = makeURL() {
                     res = .failure(.right(url))
                 } else {
+                    // - TODO: Irregular case handling
                     return
                 }
 
@@ -92,6 +94,7 @@ final class DetailModel: DetailModelProtocol {
                 delegate?.didFetchRelatedVideos(response.items)
 
             case .failure:
+                // - TODO: Error handling
                 break
             }
         }
@@ -106,6 +109,7 @@ final class DetailModel: DetailModelProtocol {
                 delegate?.didFetchNewestVideos(videos)
 
             case .failure:
+                // - TODO: Error handling
                 break
             }
         }
@@ -116,10 +120,12 @@ final class DetailModel: DetailModelProtocol {
             switch result {
             case let .success(response):
                 guard let channel = response.items.first else {
+                    // - TODO: Irregular case handling
                     return
                 }
                 delegate?.didFetchChannel(channel)
             case .failure:
+                // - TODO: Error handling
                 break
             }
         }
